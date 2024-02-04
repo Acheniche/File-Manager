@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { currPath } from './path.js';
-import { checkPath } from './checks.js';
+import { checkPath, isFile } from './checks.js';
 
 
 export const up = () => {
