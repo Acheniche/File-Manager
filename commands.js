@@ -1,42 +1,44 @@
+import { up, cd, ls } from "./modules/nwd.js";
+
 export const commands = (command) => {
     switch (true) {
-        case 'up' === value.substring(0, 2):
+        case 'up' === command.substring(0, 2):
+            up();
+          break;
+        case 'cd ' === command.substring(0, 3):
+            cd();
+          break;
+        case 'ls' === command.substring(0, 2):
+            ls();
+          break;
+        case 'cat' === command.substring(0, 3):
 
           break;
-        case 'cd ' === value.substring(0, 3):
-            
-          break;
-        case 'ls' === value.substring(0, 2):
+        case 'add' === command.substring(0, 3):
 
           break;
-        case 'cat' === value.substring(0, 3):
+        case 'rn' === command.substring(0, 2):
 
           break;
-        case 'add' === value.substring(0, 3):
+        case 'cp' === command.substring(0, 2):
 
           break;
-        case 'rn' === value.substring(0, 2):
+        case 'mv' === command.substring(0, 2):
 
           break;
-        case 'cp' === value.substring(0, 2):
+        case 'rm' === command.substring(0, 2):
 
           break;
-        case 'mv' === value.substring(0, 2):
+        case 'os' === command.substring(0, 2):
 
           break;
-        case 'rm' === value.substring(0, 2):
+        case 'hash ' === command.substring(0, 5):
 
           break;
-        case 'os' === value.substring(0, 2):
+        case 'compress' === command.substring(0, 8):
 
           break;
-        case 'hash ' === value.substring(0, 5):
-
-          break;
-        case 'compress' === value.substring(0, 8):
-
-          break;
-        case 'decompress' === value.substring(0, 10):
+        case 'decompress' === command.substring(0, 10):
 
           break;
     default: console.error('Invalid input')
