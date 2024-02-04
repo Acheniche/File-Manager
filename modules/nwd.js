@@ -21,11 +21,29 @@ export const cd = (value) => {
     }).catch(() => console.log('Operation failed'));
 };
 
-export const ls = () => {
-    fs.readdir(currPath.currPath)
-    .then((files) => {
-      console.log(files);
-      console.log(`You are currently in ${currPath.currPath}`);
-    })
-    .catch(() => console.log('Operation failed'));
+export const ls = async () => {
+    try {
+        const files = await fs.readdir(currPath.currPath, { withFileTypes: true });
+        console.table(
+            files.map((item) => {
+                    return {
+                        Name: item.name,
+                        Type: item.isDirectory() ? 'directory' : 'file',
+                    };
+                })
+                .sort((a, b) => {
+                    if (a.Type === 'directory' && b.Type === 'file') {
+                        return -1;
+                    }
+                    if (a.Type === 'file' && b.Type === 'directory') {
+                        return 1;
+                    }
+                    return a.Name.localeCompare(b.Name);
+                }),
+        );
+        console.log(`You are currently in ${currPath.currPath}`);
+    } catch {
+        console.log('Operation failed')
+    }
+
 };

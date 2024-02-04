@@ -2,6 +2,7 @@ import { up, cd, ls } from "./modules/nwd.js";
 import { cat, add, rn, cp, mv, rm } from "./modules/basicOperations.js";
 import { OS } from "./modules/os.js";
 import { hashCalculation } from "./modules/hash.js";
+import { compress, decompress } from "./modules/zip.js";
 
 export const commands = (command) => {
     switch (true) {
@@ -39,10 +40,10 @@ export const commands = (command) => {
             hashCalculation(command.substring(5));
           break;
         case 'compress' === command.substring(0, 8):
-
+            compress(command.substring(8).trim());
           break;
         case 'decompress' === command.substring(0, 10):
-
+            decompress(command.substring(10).trim());
           break;
     default: console.error('Invalid input')
     }     
