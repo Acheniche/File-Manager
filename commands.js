@@ -1,5 +1,7 @@
 import { up, cd, ls } from "./modules/nwd.js";
-import { cat, add } from "./modules/basicOperations.js";
+import { cat, add, rn, cp, mv, rm } from "./modules/basicOperations.js";
+import { OS } from "./modules/os.js";
+import { hashCalculation } from "./modules/hash.js";
 
 export const commands = (command) => {
     switch (true) {
@@ -31,10 +33,10 @@ export const commands = (command) => {
             rm(command.substring(2).trim());
           break;
         case 'os' === command.substring(0, 2):
-
+            OS(command.substring(2).trim());
           break;
         case 'hash ' === command.substring(0, 5):
-
+            hashCalculation(command.substring(5));
           break;
         case 'compress' === command.substring(0, 8):
 
